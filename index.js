@@ -6,7 +6,6 @@ var _headers     = {}
   , _header_list = []
 
   , handle       = function handle(req, res, next) {
-    res.set("X-Powered-By", hen.name);
     for(var i=0; i<_header_list.length; i++) {
     	var item = _header_list[i];
     	res.setHeader(item.name, item.value);
