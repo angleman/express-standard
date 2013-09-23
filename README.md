@@ -25,30 +25,22 @@ headers.add({
 });
 
 app.use(headers.handle);
-
-console.log(headers.get()) // { x-powered-by:"Awesomeness", ...}
-
 ```
 
 ## Powered By Sample :bulb:
 
 ```
 app.use(headers.powered_by('Awesomeness'));
+console.log(headers.get()) // { x-powered-by:"Awesomeness"}
 ```
 
 
-## Basic Content Security Policy :bulb:
+## SSL Only Basic Content Security Policy :bulb:
 
 ```
 ssl_only = "default-src https:; script-src https: 'unsafe-inline'; style-src https: 'unsafe-inline'";
 
-app.use(headers.powered_by('Awesomeness'));
-
-// or
-
-app.use(headers.raw({
-    'x-powered-by': 'Awesomeness'
-}));
+app.use(headers.set("Basic-Content-Security": ssl_only));
 ```
 
 
