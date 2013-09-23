@@ -133,6 +133,7 @@ function add_csp_domain(area, domain, protocols, subdomains) {
 		domain = area;
 		area  = 'default-src';
 	}
+	subdomains = subdomains || false;
 	if (typeof protocols == 'undefined') {
 		protocols = ['http://', 'https://', 'ws://'];
 	} else if (typeof protocols == 'string') {
@@ -141,7 +142,7 @@ function add_csp_domain(area, domain, protocols, subdomains) {
 	if (domain.indexOf('//')>-1) { // domain and protocol specified
 		return add_csp(area, "'self'");
 	}
-	if (subdomain) {
+	if (subdomains) {
 		domain = '*.' + domain;
 	}
 	for(var i=0; i<protocols.length; i++) {
