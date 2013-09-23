@@ -12,6 +12,12 @@
     "url": "https://github.com/angleman/express-standard.git"
   },
   "keywords": [
+    "express",
+    "headers",
+    "default",
+    "standard",
+    "powered-by",
+    "csp"
   ],
   "author": "angleman",
   "license": "MIT",
@@ -24,7 +30,6 @@
   "dependencies": {
   },
   "devDependencies": {
-     "license-md": "~0.2.5",
      "grunt":      "~0.4.x",
      "grunt-bump": "~0.0.x",
      "mocha":      "~1.12.0",

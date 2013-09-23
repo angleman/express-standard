@@ -3,29 +3,58 @@
 Easy method to define standard express headers
 
 
-## Install
+## Install :hammer:
 
 ```
 npm install express-standard
 ```
 
-## Usage
+## Usage :wrench:
 
 ```
-var express_standard = require('express-standard');
-express_standard({
-	option: null
-}, function(err, data) {
-	if (err) {
-		console.log(err);
-	} else {
-		console.log(data);
-	}
+headers = require('express-standard');
+
+app.use(headers.set({
+    "x-powered-by": "Awesomeness"
+}));
+
+app.use(headers.powered_by('Awesomeness'));
+```
+
+## Powered By Sample :bulb:
+
+```
+headers = require('express-standard');
+
+headers.set({
+    'x-powered-by': 'Awesomeness'
 });
+app.use(headers.standard);
+
+// or
+
+app.use(headers.raw({
+    'x-powered-by': 'Awesomeness'
+}));
 ```
 
 
-## License: MIT
+## Basic Content Security Policy :bulb:
 
-Dependencies:
+```
+headers = require('express-standard');
+
+ssl_only = "default-src https:; script-src https: 'unsafe-inline'; style-src https: 'unsafe-inline'";
+
+app.use(headers.powered_by('Awesomeness'));
+
+// or
+
+app.use(headers.raw({
+    'x-powered-by': 'Awesomeness'
+}));
+```
+
+
+## License: MIT :unlock:
 
