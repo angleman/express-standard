@@ -1,6 +1,6 @@
 # express-standard [![NPM version](https://badge.fury.io/js/express-standard.png?branch=master)](https://npmjs.org/package/express-standard) [![Build Status](https://travis-ci.org/angleman/express-standard.png?branch=master)](https://travis-ci.org/angleman/express-standard/builds) [![Dependency Status](https://gemnasium.com/angleman/express-standard.png?branch=master)](https://gemnasium.com/angleman/express-standard) [![License](http://badgr.co/use/MIT.png?bg=%2343d100)](#licensemit)
 
-Easy method to define standard express headers
+Easy method to define standard express headers and assist with Content-Security-Policy including social media widgets
 
 
 ## Install :hammer:
@@ -19,7 +19,7 @@ headers.set({
 }));
 
 headers.add({
-    "Basic-Content-Security": "default-src 'self'"
+    "Content-Security-Policy": "default-src 'self'"
 });
 
 headers.add_csp(area, value); // optional area, set to value
