@@ -33,6 +33,7 @@ headers.add_csp_social_widgets(); // default is ['facebook', 'twitter', 'google+
 headers.add_domain('mydomain.com', protocols); // default protocols: http://, https:// & ws:// 
 headers.add_domain('mydomain.com', 'https://', true); // https only and all subdomain included
 headers.add_domain('style', 'yui.yahooapis.com'); // allow PureCss stylesheet over all protocols
+headers.add_domain('script', ['cdnjs', '*.google.com']); // multiple domains can be supplied as an array
 
 app.use(headers.handle);
 
