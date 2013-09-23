@@ -22,12 +22,13 @@ headers.add({
     "Content-Security-Policy": "default-src 'self'"
 });
 
-headers.add_csp(area, value); // optional area, set to value
-headers.add_csp('https:'); // "Basic-Content-Security": "default-src 'self' https:"
+headers.add_csp(area, value);// optional area, set to value
+headers.add_csp_self(area);  // add 'self' to an area, default area is default-src
+headers.add_csp('https:');   // now "Basic-Content-Security": "default-src 'self' https:"
 headers.add_csp('style', 'http://yui.yahooapis.com'); // allow PureCSS stylesheet
-headers.add_csp_self(area); // add 'self' to an area, default area is default-src
-headers.add_csp_report('script', 'https:'); // report script-src events
-headers.add_csp('report-uri', '/csp_report'); // set report callback
+headers.add_csp_report('script', 'https:');    // report script-src events
+headers.add_csp('report-uri', '/csp_report');  // set report callback
+headers.add_csp_allow_unsafe('script', notEval); // if notEval is set to true then unsafe_eval is not included, default area is script 
 headers.add_csp_social_widgets(); // default is ['facebook', 'twitter', 'google+']
 headers.add_domain('mydomain.com', protocols); // default protocols: http://, https:// & ws:// 
 headers.add_domain('mydomain.com', 'https://', true); // https only and all subdomain included
@@ -66,15 +67,6 @@ ssl_only = "default-src https:; script-src https: 'unsafe-inline'; style-src htt
 
 app.use(headers.set("Basic-Content-Security": ssl_only));
 ```
-
-## Content Security Policy Helpers :wrench:
-
-```js
-ssl_only = "default-src https:; script-src https: 'unsafe-inline'; style-src https: 'unsafe-inline'";
-
-app.use(headers.set("Basic-Content-Security": ssl_only));
-```
-
 
 ## License: MIT :unlock:
 
