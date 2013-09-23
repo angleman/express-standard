@@ -29,6 +29,9 @@
   },
   "dependencies": {
   },
+  "potentialDependencies":{
+    "foreach":"~2.0.4"
+  },
   "devDependencies": {
      "grunt":      "~0.4.x",
      "grunt-bump": "~0.0.x",

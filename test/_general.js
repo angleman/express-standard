@@ -17,12 +17,27 @@ describe('express-standard', function() {
 	        headers = require('../index.js');
         });
 
-    	it('be powered by awesomeness', function() {
+        it('be powered by awesomeness', function() {
             headers.powered_by('Awesomeness');
             var results = headers.get();
             should.exist(results['x-powered-by']);
             results['x-powered-by'].should.equal('Awesomeness');
         });
+
+        it('be powered by package', function() {
+            headers.app_powered_by();
+            var results = headers.get();
+            should.exist(results['x-powered-by']);
+            results['x-powered-by'].should.equal('express-standard');
+        });
+
+        it('have self default source', function() {
+            headers.add_csp_self();
+            var results = headers.get();
+            should.exist(results['Content-Security-Policy']);
+            results['Content-Security-Policy'].should.equal("default-src 'self'");
+        });
+        
 
     });
 });
