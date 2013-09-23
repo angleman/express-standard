@@ -14,36 +14,32 @@ npm install express-standard
 ```
 headers = require('express-standard');
 
-app.use(headers.set({
+app.use(
+
+headers.set({
     "x-powered-by": "Awesomeness"
 }));
 
-app.use(headers.powered_by('Awesomeness'));
+headers.add({
+    "Basic-Content-Security": "default-src 'self'"
+});
+
+app.use(headers.handle);
+
+console.log(headers.get()) // { x-powered-by:"Awesomeness", ...}
+
 ```
 
 ## Powered By Sample :bulb:
 
 ```
-headers = require('express-standard');
-
-headers.set({
-    'x-powered-by': 'Awesomeness'
-});
-app.use(headers.standard);
-
-// or
-
-app.use(headers.raw({
-    'x-powered-by': 'Awesomeness'
-}));
+app.use(headers.powered_by('Awesomeness'));
 ```
 
 
 ## Basic Content Security Policy :bulb:
 
 ```
-headers = require('express-standard');
-
 ssl_only = "default-src https:; script-src https: 'unsafe-inline'; style-src https: 'unsafe-inline'";
 
 app.use(headers.powered_by('Awesomeness'));
