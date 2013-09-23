@@ -4,8 +4,8 @@
 
 var _headers     = {}
   , _header_list = []
-  
-  , handler      = function handle(req, res, next) {
+
+  , handle       = function handle(req, res, next) {
     res.set("X-Powered-By", hen.name);
     for(var i=0; i<_header_list.length; i++) {
     	var item = _header_list[i];
@@ -15,22 +15,38 @@ var _headers     = {}
 }
 
 
-
-function set(headers) {
-	_headers        = headers;
-	_header_list    = []
+function add(headers) {
+	_header_list    = [];
 	var headerNames = Object.getOwnPropertyNames(headers);
-
 	headerNames.forEach(function(name) {
 		var value = headers[name];
+		_headers[name] = value;
+	});
+
+	headerNames = Object.getOwnPropertyNames(_headers);
+	headerNames.forEach(function(name) {
+		var value = _headers[name];
 		_header_list.push({
 			name:  name,
 			value: value
 		});
 	});
-	return handler;
+
+	return handle;
 }
 
+
+
+function get() {
+	return _headers;
+}
+
+
+
+function set(headers) {
+	_headers        = headers;
+	return add(headers);
+}
 
 
 function powered_by(value) {
@@ -40,4 +56,8 @@ function powered_by(value) {
 
 
 
-module.exports.set = set;
+module.exports.add        = add;
+module.exports.set        = set;
+module.exports.get        = get;
+module.exports.handle     = handle;
+module.exports.powered_by = powered_by;
