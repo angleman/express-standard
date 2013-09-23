@@ -1,6 +1,6 @@
 {
   "name": "express-standard",
-  "version": "0.1.0", 
+  "version": "0.1.1", 
   "description": "Easy method to define standard express headers",
    "main": "index.js",
   "scripts": {
