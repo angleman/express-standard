@@ -12,26 +12,17 @@ var should = require('should')
 
 describe('express-standard', function() {
     describe('should', function() {
-    	var express_standard;
+    	var headers;
     	it('load without errors', function() {
-	        express_standard = require('../index.js');
+	        headers = require('../index.js');
         });
 
-    //    express_standard = require('../index.js');
-
-  //      var flag = false;
-//        beforeEach(function(done){
-  //          this.timeout(15 * 1000); // allow test to run for 15 seconds
-//            express_standard({
-//            }, function(err, data) {
-//                flag = true;
-  //              done(); // complete the async beforeEach
-//            });
-    //    });   
-
-//    	it('callback ok', function() {
-//			 flag.should.equal(true);
-  //      });
+    	it('be powered by awesomeness', function() {
+            headers.powered_by('Awesomeness');
+            var results = headers.get();
+            should.exist(results['x-powered-by']);
+            results['x-powered-by'].should.equal('Awesomeness');
+        });
 
     });
 });
