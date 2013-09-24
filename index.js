@@ -201,6 +201,7 @@ function add_csp_social_widgets(widgets) {
 	}
 	if (widgets.indexOf('facebook')>-1) {
 		add_csp('script-src', 'http://graph.facebook.com');
+		add_csp('script-src', 'https://graph.facebook.com');
 		add_csp('frame-src', 'https://facebook.com');
 	}
 	if (widgets.indexOf('twitter')>-1) {
@@ -217,8 +218,8 @@ function add_csp_social_widgets(widgets) {
 
 function add_csp_youtube() {
 	add_csp('script-src', 'https://youtube.com');
-	add_csp('frame-src', 'http://www.youtube.com');
-	add_csp('frame-src', 'https://www.youtube.com');
+	add_csp_domain('img-src', '*.ytimg.com', ['http://','https://']);
+	add_csp_domain('frame-src', 'www.youtube.com', ['http://','https://']);
 }
 
 
