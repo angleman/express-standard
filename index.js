@@ -10,6 +10,7 @@ var fs               = require('fs')
   }
   , csp_field        = 'Content-Security-Policy'
   , csp_report_field = 'Content-Security-Policy-Report-Only'
+  , src_areas        = ['default','object','script','style','img','media','frame','font'];
 
   , handle       = function handle(req, res, next) {
     for(var i=0; i<_header_list.length; i++) {
@@ -96,9 +97,15 @@ function add_csp_headers(reportOnly) {
 function add_csp(area, value, reportOnly) {
 	if (typeof value === 'undefined') {
 		value                  = area;
-		area                   = 'default-src';
+		area                   = '*';
 	}
-	var src_areas              = ',default,object,script,style,img,media,frame,font';
+	if (area == '*') {
+		for (var i=0; i<src_areas.length; i++) {
+			add_csp(src_areas[i], value, reportOnly);
+			return handle;
+		}
+	}
+	var src_areas              = ',' + src_areas.join(',');
 	if (src_areas.indexOf(area)>0) {
 		area                   = area + '-src';
 	}
@@ -131,7 +138,7 @@ function add_csp_self(area) {
 function add_csp_domain(area, domain, protocols, subdomains) {
 	if (typeof domain == 'undefined') {
 		domain = area;
-		area  = 'default-src';
+		area  = '*';
 	}
 	subdomains = subdomains || false;
 	if (typeof protocols == 'undefined') {

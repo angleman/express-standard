@@ -23,7 +23,7 @@ headers.add({
 });
 
 headers.add_csp(area, value);// optional area, set to value
-headers.add_csp_self(area);  // add 'self' to an area, default area is default-src
+headers.add_csp_self(area);  // add 'self' to an area, default area is * (all)
 headers.add_csp('https:');   // now "Basic-Content-Security": "default-src 'self' https:"
 headers.add_csp('style', 'http://yui.yahooapis.com'); // allow PureCSS stylesheet
 headers.add_csp_report('script', 'https:');    // report script-src events
