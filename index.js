@@ -67,7 +67,6 @@ function powered_by(value) {
 
 
 function app_powered_by(includeVersion) {
-	console.log(__dirname);
 	if (fs.existsSync(__dirname + '/package.json')) {
 		var appPackage = require(__dirname + '/package.json');
 		var name = (includeVersion) ? appPackage.name + '/' + appPackage.version : appPackage.name;
@@ -97,15 +96,19 @@ function add_csp_headers(reportOnly) {
 function add_csp(area, value, reportOnly) {
 	if (typeof value === 'undefined') {
 		value                  = area;
-		area                   = '*';
+		area                   = 'default-src';
 	}
 	reportOnly = reportOnly || false;
-	if (area == '*') {
-		for (var i=0; i<src_areas.length; i++) {
-			area = src_areas[i];
+	if (area == '*') { 
+		area = src_areas; 
+	}
+	if (area.indexOf(',')>0) {
+		var areas = area.split(',');
+		for (var i=0; i<areas.length; i++) {
+			area = areas[i];
 			add_csp(area, value, reportOnly);
-			return handle;
 		}
+		return handle;
 	}
 	var areas                  = ',' + src_areas.join(',');
 	if (areas.indexOf(area)>0) {
@@ -140,7 +143,7 @@ function add_csp_self(area) {
 function add_csp_domain(area, domain, protocols, subdomains) {
 	if (typeof domain == 'undefined') {
 		domain = area;
-		area  = '*';
+		area  = 'default-src';
 	}
 	subdomains = subdomains || false;
 	if (typeof protocols == 'undefined') {
@@ -155,8 +158,8 @@ function add_csp_domain(area, domain, protocols, subdomains) {
 		return handle;
 	}
 
-	if (domain.indexOf('//')>-1) { // domain and protocol specified
-		return add_csp(area, "'self'");
+	if (domain.indexOf('//')>-1) { // specific domain and protocol
+		return add_csp(area, domain);
 	}
 	if (subdomains) {
 		domain = '*.' + domain;

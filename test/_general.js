@@ -37,7 +37,6 @@ describe('express-standard', function() {
             should.exist(results['Content-Security-Policy']);
             results['Content-Security-Policy'].should.equal("default-src 'self'");
         });
-        
 
     });
 });

@@ -22,9 +22,10 @@ headers.add({
     "Content-Security-Policy": "default-src 'self'"
 });
 
-headers.add_csp(area, value);// optional area, set to value
-headers.add_csp_self(area);  // add 'self' to an area, default area is * (all)
-headers.add_csp('https:');   // now "Basic-Content-Security": "default-src 'self' https:"
+headers.add_csp(area, value); // optional area, set to value
+headers.add_csp_self(area);   // add 'self' to an area, default area is 'default'
+headers.add_csp('https:');    // now "Basic-Content-Security": "default-src 'self' https:"
+headers.add_csp('*','http:'); // add http: to all *-src 
 headers.add_csp('style', 'http://yui.yahooapis.com'); // allow PureCSS stylesheet
 headers.add_csp_report('script', 'https:');    // report script-src events
 headers.add_csp('report-uri', '/csp_report');  // set report callback
@@ -34,6 +35,7 @@ headers.add_domain('mydomain.com', protocols); // default protocols: http://, ht
 headers.add_domain('mydomain.com', 'https://', true); // https only and all subdomain included
 headers.add_domain('style', 'yui.yahooapis.com'); // allow PureCss stylesheet over all protocols
 headers.add_domain('script', ['cdnjs', '*.google.com']); // multiple domains can be supplied as an array
+headers.add_domain('default,script,style', 'localhost'); // multiple areas comma delimited
 
 app.use(headers.handle);
 
