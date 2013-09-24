@@ -151,19 +151,26 @@ function add_csp_domain(area, domain, protocols, subdomains) {
 	} else if (typeof protocols == 'string') {
 		protocols = protocols.split(',');
 	}
-	if (typeof domain == 'array') {
+	if (typeof domain == 'string' && domain.indexOf(',')>-1) {
+		domain = domain.split(',');
+	}
+	if (typeof domain == 'array' || (typeof domain == 'object' && domain.length>0)) {
 		for(var i=0; i<domain.length; i++) {
-			add_csp_domain(area, domain[i], protocols, subdomains);
+			var dom = domain[i];
+			add_csp_domain(area, dom, protocols, subdomains);
 		}
 		return handle;
 	}
 
-	if (domain.indexOf('//')>-1) { // specific domain and protocol
-		return add_csp(area, domain);
-	}
 	if (subdomains) {
 		domain = '*.' + domain;
 	}
+
+
+	if (domain.indexOf('//')>-1) { // specific domain and protocol
+		return add_csp(area, domain);
+	}
+
 	for(var i=0; i<protocols.length; i++) {
 		var protocol = protocols[i];
 		if (protocol.indexOf('://')<0) {
@@ -189,7 +196,7 @@ function add_csp_allow_unsafe(area, notEval) {
 // attribution: http://www.html5rocks.com/en/tutorials/security/content-security-policy/#use-case-1-social-media-widgets
 function add_csp_social_widgets(widgets) {
 	widgets = widgets || 'facebook,twitter,google+';
-	if (typeof widgets == 'array') {
+	if (typeof widgets == 'array' || (typeof widgets == 'object' && widgets.length>0)) {
 		widgets = widgets.join(',');
 	}
 	if (widgets.indexOf('facebook')) {
