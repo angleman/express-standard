@@ -199,16 +199,16 @@ function add_csp_social_widgets(widgets) {
 	if (typeof widgets == 'array' || (typeof widgets == 'object' && widgets.length>0)) {
 		widgets = widgets.join(',');
 	}
-	if (widgets.indexOf('facebook')) {
+	if (widgets.indexOf('facebook')>-1) {
 		add_csp('script-src', 'http://graph.facebook.com');
 		add_csp('frame-src', 'https://facebook.com');
 	}
-	if (widgets.indexOf('twitter')) {
+	if (widgets.indexOf('twitter')>-1) {
 		add_csp('script-src', 'https://platform.twitter.com');
 		add_csp('script-src', 'http://urls.api.twitter.com');
 		add_csp('frame-src', 'https://platform.twitter.com');
 	}
-	if (widgets.indexOf('google+')) {
+	if (widgets.indexOf('google+')>-1) {
 		add_csp('script-src', 'https://apis.google.com');
 		add_csp('frame-src', 'https://plusone.google.com');
 	}
