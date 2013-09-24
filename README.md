@@ -30,12 +30,13 @@ headers.add_csp('style', 'http://yui.yahooapis.com'); // allow PureCSS styleshee
 headers.add_csp_report('script', 'https:');    // report script-src events
 headers.add_csp('report-uri', '/csp_report');  // set report callback
 headers.add_csp_allow_unsafe('script', notEval); // if notEval is set to true then unsafe_eval is not included, default area is script 
-headers.add_csp_social_widgets(); // default is ['facebook', 'twitter', 'google+']
 headers.add_domain('mydomain.com', protocols); // default protocols: http://, https:// & ws:// 
 headers.add_domain('mydomain.com', 'https://', true); // https only and all subdomain included
 headers.add_domain('style', 'yui.yahooapis.com'); // allow PureCss stylesheet over all protocols
 headers.add_domain('script', ['cdnjs', '*.google.com']); // multiple domains can be supplied as an array
 headers.add_domain('default,script,style', 'localhost'); // multiple areas comma delimited
+headers.add_csp_social_widgets(); // default is ['facebook', 'twitter', 'google+']
+headers.add_csp_youtube(); // allow youtube
 
 app.use(headers.handle);
 

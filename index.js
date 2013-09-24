@@ -200,10 +200,11 @@ function add_csp_social_widgets(widgets) {
 		widgets = widgets.join(',');
 	}
 	if (widgets.indexOf('facebook')) {
+		add_csp('script-src', 'http://graph.facebook.com');
 		add_csp('frame-src', 'https://facebook.com');
 	}
 	if (widgets.indexOf('twitter')) {
-		add_csp('script-src', 'https://platform.twitter.com');
+		add_csp('script-src', ['https://platform.twitter.com', 'http://urls.api.twitter.com']);
 		add_csp('frame-src', 'https://platform.twitter.com');
 	}
 	if (widgets.indexOf('google+')) {
@@ -214,12 +215,22 @@ function add_csp_social_widgets(widgets) {
 }
 
 
+function add_csp_youtube() {
+	add_csp('script-src', 'https://youtube.com');
+	add_csp('frame-src', ['http://www.youtube.com', 'https://www.youtube.com']);
+}
+
+
+function add_csp_firebase() {
+	add_csp('script-src', ['https://*.firebaseio.com', 'https://cdn.firebase.com']);
+}
 
 module.exports.add                    = add;
 module.exports.add_csp                = add_csp;
 module.exports.add_csp_self           = add_csp_self;
 module.exports.add_csp_report         = add_csp_report;
 module.exports.add_csp_domain         = add_csp_domain;
+module.exports.add_csp_youtube        = add_csp_youtube;
 module.exports.add_csp_allow_unsafe   = add_csp_allow_unsafe;
 module.exports.add_csp_social_widgets = add_csp_social_widgets;
 module.exports.set                   = set;
