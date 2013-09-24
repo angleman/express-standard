@@ -36,7 +36,8 @@ headers.add_domain('style', 'yui.yahooapis.com'); // allow PureCss stylesheet ov
 headers.add_domain('script', ['cdnjs', '*.google.com']); // multiple domains can be supplied as an array
 headers.add_domain('default,script,style', 'localhost'); // multiple areas comma delimited
 headers.add_csp_social_widgets(); // default is ['facebook', 'twitter', 'google+']
-headers.add_csp_youtube(); // allow youtube
+headers.add_csp_youtube();  // allow youtube
+headers.add_csp_firebase(); // allow firebase
 
 app.use(headers.handle);
 

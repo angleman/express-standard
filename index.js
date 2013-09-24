@@ -224,7 +224,7 @@ function add_csp_youtube() {
 
 
 function add_csp_firebase() {
-	add_csp('script-src', 'https://*.firebaseio.com');
+	add_csp('script-src,frame-src', 'https://*.firebaseio.com');
 	add_csp('script-src', 'https://cdn.firebase.com');
 }
 
