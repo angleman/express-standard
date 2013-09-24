@@ -204,7 +204,8 @@ function add_csp_social_widgets(widgets) {
 		add_csp('frame-src', 'https://facebook.com');
 	}
 	if (widgets.indexOf('twitter')) {
-		add_csp('script-src', ['https://platform.twitter.com', 'http://urls.api.twitter.com']);
+		add_csp('script-src', 'https://platform.twitter.com');
+		add_csp('script-src', 'http://urls.api.twitter.com');
 		add_csp('frame-src', 'https://platform.twitter.com');
 	}
 	if (widgets.indexOf('google+')) {
@@ -217,13 +218,16 @@ function add_csp_social_widgets(widgets) {
 
 function add_csp_youtube() {
 	add_csp('script-src', 'https://youtube.com');
-	add_csp('frame-src', ['http://www.youtube.com', 'https://www.youtube.com']);
+	add_csp('frame-src', 'http://www.youtube.com');
+	add_csp('frame-src', 'https://www.youtube.com');
 }
 
 
 function add_csp_firebase() {
-	add_csp('script-src', ['https://*.firebaseio.com', 'https://cdn.firebase.com']);
+	add_csp('script-src', 'https://*.firebaseio.com');
+	add_csp('script-src', 'https://cdn.firebase.com');
 }
+
 
 module.exports.add                    = add;
 module.exports.add_csp                = add_csp;
