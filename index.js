@@ -105,8 +105,8 @@ function add_csp(area, value, reportOnly) {
 			return handle;
 		}
 	}
-	var src_areas              = ',' + src_areas.join(',');
-	if (src_areas.indexOf(area)>0) {
+	var areas                  = ',' + src_areas.join(',');
+	if (areas.indexOf(area)>0) {
 		area                   = area + '-src';
 	}
 	if (reportOnly) {
