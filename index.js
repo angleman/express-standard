@@ -204,9 +204,8 @@ function add_csp_social_widgets(widgets) {
 		add_csp('frame-src', 'https://facebook.com');
 	}
 	if (widgets.indexOf('twitter')>-1) {
-		add_csp('script-src', 'https://platform.twitter.com');
+		add_csp('script-src,frame-src', 'https://platform.twitter.com');
 		add_csp('script-src', 'http://urls.api.twitter.com');
-		add_csp('frame-src', 'https://platform.twitter.com');
 	}
 	if (widgets.indexOf('google+')>-1) {
 		add_csp('script-src', 'https://apis.google.com');
