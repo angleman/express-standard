@@ -1,6 +1,6 @@
 {
   "name": "express-standard",
-  "version": "0.3.5", 
+  "version": "0.3.6", 
   "description": "Easy method to define standard express headers and assist with Content-Security-Policy including social media widgets",
    "main": "index.js",
   "scripts": {
