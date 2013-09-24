@@ -99,9 +99,11 @@ function add_csp(area, value, reportOnly) {
 		value                  = area;
 		area                   = '*';
 	}
+	reportOnly = reportOnly || false;
 	if (area == '*') {
 		for (var i=0; i<src_areas.length; i++) {
-			add_csp(src_areas[i], value, reportOnly);
+			area = src_areas[i];
+			add_csp(area, value, reportOnly);
 			return handle;
 		}
 	}
@@ -164,7 +166,7 @@ function add_csp_domain(area, domain, protocols, subdomains) {
 		if (protocol.indexOf('://')<0) {
 			protocol = protocol + '://';
 		}
-		add_csp(protocols[i] + domain);
+		add_csp(area, protocols[i] + domain);
 	}
 	return handle;
 }
