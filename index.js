@@ -10,7 +10,7 @@ var fs               = require('fs')
   }
   , csp_field        = 'Content-Security-Policy'
   , csp_report_field = 'Content-Security-Policy-Report-Only'
-  , src_areas        = ['default','object','script','style','img','media','frame','font'];
+  , src_areas        = ['default','object','script','style','img','media','frame','font']
 
   , handle       = function handle(req, res, next) {
     for(var i=0; i<_header_list.length; i++) {
