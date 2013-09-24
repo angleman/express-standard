@@ -177,7 +177,7 @@ function add_csp_domain(area, domain, protocols, subdomains) {
 
 
 function add_csp_allow_unsafe(area, notEval) {
-	area = area || 'script-src';
+	area = area || 'script-src,style-src';
 	if (!notEval) {
 		add_csp('script-src', "'unsafe-eval'");
 	}
