@@ -147,7 +147,7 @@ function add_csp_domain(area, domain, protocols, subdomains) {
 	}
 	subdomains = subdomains || false;
 	if (typeof protocols == 'undefined') {
-		protocols = ['http://', 'https://', 'ws://'];
+		protocols = ['http://', 'https://', 'ws://', 'wss://'];
 	} else if (typeof protocols == 'string') {
 		protocols = protocols.split(',');
 	}
@@ -226,6 +226,7 @@ function add_csp_youtube() {
 function add_csp_firebase() {
 	add_csp('script-src,frame-src', 'https://*.firebaseio.com');
 	add_csp('script-src', 'https://cdn.firebase.com');
+	add_csp('connect-src', 'wss://*.firebaseio.com');
 }
 
 
