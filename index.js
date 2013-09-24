@@ -231,6 +231,7 @@ module.exports.add_csp_self           = add_csp_self;
 module.exports.add_csp_report         = add_csp_report;
 module.exports.add_csp_domain         = add_csp_domain;
 module.exports.add_csp_youtube        = add_csp_youtube;
+module.exports.add_csp_firebase       = add_csp_firebase;
 module.exports.add_csp_allow_unsafe   = add_csp_allow_unsafe;
 module.exports.add_csp_social_widgets = add_csp_social_widgets;
 module.exports.set                   = set;
