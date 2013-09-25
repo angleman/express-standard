@@ -147,7 +147,7 @@ function add_csp_domain(area, domain, protocols, subdomains) {
 	}
 	subdomains = subdomains || false;
 	if (typeof protocols == 'undefined') {
-		protocols = ['http://', 'https://', 'ws://', 'wss://'];
+		protocols = ['http://', 'https://']; // 'ws://', 'wss://'
 	} else if (typeof protocols == 'string') {
 		protocols = protocols.split(',');
 	}
