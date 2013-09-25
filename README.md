@@ -1,6 +1,6 @@
 # express-standard [![NPM version](https://badge.fury.io/js/express-standard.png?branch=master)](https://npmjs.org/package/express-standard) [![Build Status](https://travis-ci.org/angleman/express-standard.png?branch=master)](https://travis-ci.org/angleman/express-standard/builds) [![Dependency Status](https://gemnasium.com/angleman/express-standard.png?branch=master)](https://gemnasium.com/angleman/express-standard) [![License](http://badgr.co/use/MIT.png?bg=%2343d100)](#licensemit)
 
-Easy method to define standard express headers and assist with Content-Security-Policy including social media widgets
+Easy method to define standard express headers and assist with Content-Security-Policy (CSP) including social media widgets
 
 
 ## Install :hammer:
@@ -45,6 +45,8 @@ app.use(headers.handle);
 ```
 add_csp areas are as per http://www.w3.org/TR/CSP/
 -src can be omitted, ex: instead of ```headers.add_csp('frame-src', 'http:')``` you could specify ```headers.add_csp('frame', 'http:')``` 
+
+add_csp_allow_unsafe() is best avoided as per [content security policy](https://dvcs.w3.org/hg/content-security-policy/raw-file/tip/csp-specification.dev.html#directives); however, it is included to assist with transitioning to using CSP
 
 For sample report-uri data and social media attribution see: [content-security-policy](http://www.html5rocks.com/en/tutorials/security/content-security-policy/#reporting)
 
