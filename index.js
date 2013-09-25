@@ -182,12 +182,13 @@ function add_csp_domain(area, domain, protocols, subdomains) {
 }
 
 
-
+// this is best avoided as per: https://dvcs.w3.org/hg/content-security-policy/raw-file/tip/csp-specification.dev.html#directives
 function add_csp_allow_unsafe(area, notEval) {
-	area = area || 'script-src,style-src';
+	area = area || 'script-src,style-src,img-src';
 	if (!notEval) {
 		add_csp('script-src', "'unsafe-eval'");
 	}
+	add_csp('img', 'data:'); // allow embedded base64 images
 	return add_csp(area, "'unsafe-inline'");
 }
 
